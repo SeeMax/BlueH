@@ -2,4 +2,6 @@
 'use strict';
 //USE THE BELOW AS TEMPLATE FOR FUNCTION FILES
 
+function()
+
 });})(jQuery, this);

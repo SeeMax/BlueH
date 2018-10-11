@@ -7,7 +7,7 @@
     "gulp-autoprefixer": "*",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat-util": "*",
-    "gulp-jshint": "^2.0.4",
+    "gulp-jshint": "^2.1.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-sass": "*",
     "gulp-uglify": "^3.0.0",
