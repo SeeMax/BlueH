@@ -155,26 +155,59 @@ function main_theme_nav()
     array(
         'theme_location'  => 'header-menu',
         'menu'            => '',
-        'container'       => 'div',
-        'container_class' => 'menu-{menu slug}-container',
+        'container'       => '',
+        'container_class' => '',
         'container_id'    => '',
-        'menu_class'      => 'nav navMenu',
+        'menu_class'      => '',
         'menu_id'         => '',
         'echo'            => true,
         'fallback_cb'     => 'wp_page_menu',
         'before'          => '',
-        'after'           => '',
+        'after'           => '<div class="menu-carat"></div>',
         'link_before'     => '',
         'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
+        'items_wrap'      => '<ul class="left-menu-list">%3$s</ul>',
         'depth'           => 0,
         'walker'          => ''
         )
     );
 }
+
 /*//////////////////////////////*/
 /*//////////////////////////////*/
 /*//////////////////////////////*/
+function footer_theme_nav()
+{
+    wp_nav_menu(
+    array(
+        'theme_location'  => 'footer-menu'
+        )
+    );
+}
+
+
+function other_theme_nav() {
+  wp_nav_menu(
+  array(
+    'theme_location'  => 'other-menu',
+    'menu'            => '',
+    'container'       => 'div',
+    'container_class' => 'menu-{menu slug}-container',
+    'container_id'    => '',
+    'menu_class'      => 'nav navMenu',
+    'menu_id'         => '',
+    'echo'            => true,
+    'fallback_cb'     => 'wp_page_menu',
+    'before'          => '',
+    'after'           => '',
+    'link_before'     => '',
+    'link_after'      => '',
+    'items_wrap'      => '<ul>%3$s</ul>',
+    'depth'           => 0,
+    'walker'          => ''
+    )
+  );
+}
 
 /* Modify Extra Nav Styles
 function extra_theme_nav()
@@ -206,17 +239,13 @@ function extra_theme_nav()
 /*//////////////////////////////*/
 /*//////////////////////////////*/
 
-/* CUSTOM MENUS
+/* CUSTOM MENUS */
 
 function wpb_custom_new_menu()
 {
-    register_nav_menu('MENU_NAME', __('MENU NAME'));
-    register_nav_menu('MENU_NAME', __('MENU NAME'));
-    register_nav_menu('MENU_NAME', __('MENU NAME'));
+    register_nav_menu('other-menu', __('Other Menu'));
 }
 add_action('init', 'wpb_custom_new_menu');
-
-*/
 
 /*//////////////////////////////*/
 /*//////////////////////////////*/
@@ -255,8 +284,8 @@ function theme_header_scripts() {
     // wp_register_script('ScrollMagic', get_template_directory_uri() . '/js/lib/ScrollMagic.min.js', array(), '0.6.0', true);
     // wp_enqueue_script('ScrollMagic');
 
-    // wp_register_script('slickslider', get_template_directory_uri() . '/js/lib/slick.js', array('jquery'), '1.6.0', true);
-    // wp_enqueue_script('slickslider');
+    wp_register_script('slickslider', get_template_directory_uri() . '/js/lib/slick.js', array('jquery'), '1.6.0', true);
+    wp_enqueue_script('slickslider');
 
     //  wp_register_script('SmoothScroll', get_template_directory_uri() . '/js/lib/smooth-scroll.js', array(), '0.131', true);
     //  wp_enqueue_script('SmoothScroll');
@@ -286,7 +315,7 @@ add_action('init', 'modify_jquery_version');
 
 /* Enqueue Styles */
 function theme_style() {
-  // wp_enqueue_style( 'google-fonts', "https://fonts.googleapis.com/css?family=Montserrat:400,700,900|Roboto:300i,400,400i,500,500i,700,700i", false );
+  wp_enqueue_style( 'google-fonts', "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|IBM+Plex+Serif:300i", false );
 
   wp_register_style('fontawesome', '//use.fontawesome.com/releases/v5.0.9/css/all.css', array(), '5.0.9', 'all');
   wp_enqueue_style('fontawesome'); // Enqueue it!
@@ -297,11 +326,11 @@ function theme_style() {
   wp_register_style('normalize', get_template_directory_uri() . '/css/normalize.min.css', array(), '7.0', 'all');
   wp_enqueue_style('normalize'); // Enqueue it!
 
-  //wp_register_style('SlickSlider', get_template_directory_uri() . '/css/slick.css', array(), '1.0', 'all');
-  //wp_enqueue_style('SlickSlider'); // Enqueue it!
+  wp_register_style('SlickSlider', get_template_directory_uri() . '/css/slick.css', array(), '1.0', 'all');
+  wp_enqueue_style('SlickSlider'); // Enqueue it!
 
-  //wp_register_style('SlickTheme', get_template_directory_uri() . '/css/slick-theme.css', array(), '1.0', 'all');
-  //wp_enqueue_style('SlickTheme'); // Enqueue it!
+  wp_register_style('SlickTheme', get_template_directory_uri() . '/css/slick-theme.css', array(), '1.0', 'all');
+  wp_enqueue_style('SlickTheme'); // Enqueue it!
 
   //wp_register_style('lightbox', get_template_directory_uri() . '/css/lity.min.css', array(), '0.131', 'all');
   //wp_enqueue_style('lightbox'); // Enqueue it!
@@ -393,7 +422,27 @@ if (function_exists('acf_add_options_page')) {
         'capability'    => 'edit_posts',
         'redirect'    => false,
         'icon_url' => 'dashicons-media-spreadsheet',
+        'position' => 5
+    ));
+
+    acf_add_options_page(array(
+        'page_title'    => 'Hero Slider',
+        'menu_title'    => 'Hero Slider',
+        'menu_slug'    => 'hero_slider',
+        'capability'    => 'edit_posts',
+        'redirect'    => false,
+        'icon_url' => 'dashicons-images-alt',
         'position' => 6
+    ));
+
+    acf_add_options_page(array(
+        'page_title'    => 'Email Footer',
+        'menu_title'    => 'Email Footer',
+        'menu_slug'    => 'email_footer',
+        'capability'    => 'edit_posts',
+        'redirect'    => false,
+        'icon_url' => 'dashicons-email',
+        'position' => 7
     ));
 }
     /*  ACF GLOBAL	*/
@@ -419,24 +468,41 @@ function is_post_type($type)
 
 /* CUSTOM POST TYPES  */
 
-// add_action('init', 'create_post_type');
+add_action('init', 'create_post_type');
 
-//  function create_post_type()
-//  {
-//      register_post_type('events',
-//      // CPT Options
-//          array(
-//              'labels' => array(
-//                  'name' => __('Events'),
-//                  'singular_name' => __('Event')
-//              ),
-//              'public' => true,
-//              'menu_icon' => 'dashicons-portfolio',
-//              'has_archive' => true,
-//              'supports' => array('title','editor'),
-//          )
-//      );
-//  }
+ function create_post_type()
+ {
+     register_post_type('cbd',
+     // CPT Options
+         array(
+             'labels' => array(
+                 'name' => __('CBD 101'),
+                 'singular_name' => __('101 Q&A')
+             ),
+             'public' => true,
+             'menu_icon' => 'dashicons-unlock',
+             'has_archive' => true,
+             'supports' => array('title','editor'),
+             'menu_position' => 8,
+         )
+     );
+
+     register_post_type('testimonial',
+     // CPT Options
+         array(
+             'labels' => array(
+                 'name' => __('Testimonials'),
+                 'singular_name' => __('Testimonial')
+             ),
+             'public' => true,
+             'menu_icon' => 'dashicons-editor-quote',
+             'has_archive' => true,
+             'supports' => array('title','editor'),
+             'menu_position' => 9,
+         )
+     );
+ }
+
 
 /* 	CPT TAXONOMIES 	*/
 
@@ -657,3 +723,109 @@ add_action( 'admin_menu', 'remove_menus', 9999);
 
 /*	DISABLE XMLRPC 	*/
 add_filter('xmlrpc_enabled', '__return_false');
+
+// ADD WooCommerce Support to theme
+function mytheme_add_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
+
+// Remove WooCommerce Styling
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+function woo_product_thumbnail_size( $size ) {
+
+    $size = 'medium';
+    return $size;
+}
+add_filter( 'single_product_archive_thumbnail_size', 'woo_product_thumbnail_size' );
+
+/* WooCommerce change price format from range to "From:"
+*
+* @param float $price
+* @param obj $product
+* @return str
+*/
+function iconic_variable_price_format( $price, $product ) {
+
+   $prefix = sprintf('%s: ', __('From', 'iconic'));
+
+   $min_price_regular = $product->get_variation_regular_price( 'min', true );
+   $min_price_sale    = $product->get_variation_sale_price( 'min', true );
+   $max_price = $product->get_variation_price( 'max', true );
+   $min_price = $product->get_variation_price( 'min', true );
+
+   $price = ( $min_price_sale == $min_price_regular ) ?
+       wc_price( $min_price_regular ) :
+       '<del>' . wc_price( $min_price_regular ) . '</del>' . '<ins>' . wc_price( $min_price_sale ) . '</ins>';
+
+   return ( $min_price == $max_price ) ?
+       $price :
+       sprintf('%s%s', $prefix, $price);
+
+}
+
+add_filter( 'woocommerce_variable_sale_price_html', 'iconic_variable_price_format', 10, 2 );
+add_filter( 'woocommerce_variable_price_html', 'iconic_variable_price_format', 10, 2 );
+
+// WooCommerce Hide Add To Cart Button on Product Page
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+/**
+ * Remove related products output
+ */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+/** to change the position of excerpt **/
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 61 );
+
+// remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+// add_action( 'woocommerce_single_product_summary', 'woocommerce_single_variation', 11 );
+
+// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title',  5);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating',  10);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 50);
+// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 40);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
+remove_action('woocommerce_single_product_summary', 'WC_Structured_Data::generate_product_data()', 60);
+
+function move_variation_price() {
+    remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+    add_action( 'woocommerce_before_variations_form', 'woocommerce_single_variation', 10 );
+}
+add_action( 'woocommerce_before_add_to_cart_form', 'move_variation_price' );
+
+// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+
+
+// remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+
+
+add_theme_support( 'html5', array( 'search-form' ) );
+
+
+add_action('add_to_cart_redirect', 'resolve_dupes_add_to_cart_redirect');
+
+function resolve_dupes_add_to_cart_redirect($url = false) {
+
+     // If another plugin beats us to the punch, let them have their way with the URL
+     if(!empty($url)) { return $url; }
+
+     // Redirect back to the original page, without the 'add-to-cart' parameter.
+     // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
+     return get_bloginfo('wpurl').add_query_arg(array(), remove_query_arg('add-to-cart'));
+
+}
+
+add_action( 'after_setup_theme', 'yourtheme_setup' );
+
+function yourtheme_setup() {
+    // add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}

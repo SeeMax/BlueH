@@ -23,23 +23,42 @@
 	<img class="fug_Preloader" src="<?php // echo get_template_directory_uri();?>/img/fug_preloader.svg" >
 </div> -->
 	<header class="header" role="banner">
+		<?php get_template_part('partials/_cart-popout');?>
 		<div class="content header-inner-wrap">
-			<div class="logo-wrapper">
-				<div class="header-logo">
-					<a href="/">
-					<!--	<img src="<?php echo get_template_directory_uri(); ?>/img/ [ADD LOGO]" > -->
-					</a>
-				</div>
+			<div class="mobile-menu mobileToggle">
+				<span class="hamTop"></span>
+				<span class="hamMid"></span>
+				<span class="hamBot"></span>
 			</div>
-			<div class="all-navs-wrapper">
-				<nav class="main-nav mainNav" role="navigation">
-					<?php main_theme_nav(); ?>
-				</nav>
-				<div class="mobile-menu mobileToggle">
-					<span class="hamTop"></span>
-					<span class="hamMid"></span>
-					<span class="hamBot"></span>
-				</div>
+			<div class="header-logo">
+				<a href="<?php echo site_url();?>">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/temp-logo.svg" >
+				</a>
 			</div>
+			<nav class="main-nav mainNav" role="navigation">
+				<?php main_theme_nav(); ?>
+				<ul class="right-menu-list">
+					<li class="desktop-menu-only">
+						<a class="c-block-fill" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"></a>
+						Login
+					</li>
+					<li class="cart-trigger cartTrigger ">
+						<?php global $woocommerce; ?>
+						<span class="desktop-menu-only">Cart</span>
+						<span class="mobile-menu-only mobile-cart-icon">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/cart-icon.svg" >
+						</span>
+						<span class="header-cart-count cart-customlocation">
+							<?php echo sprintf ( _n( '%d', '%d',
+							WC()->cart->get_cart_contents_count() ),
+							WC()->cart->get_cart_contents_count() ); ?>
+						</span>
+					</li>
+					<li class="search-icon">
+						<i class="searchIcon fas fa-search" aria-hidden="true"></i>
+					</li>
+				</ul>
+			</nav>
 		</div>
+		<?php get_search_form();?>
 	</header>

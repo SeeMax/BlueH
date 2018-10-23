@@ -1,0 +1,320 @@
+@import "colors";
+
+.home-page {
+
+  p {
+    width:100%;
+    margin:0;
+  }
+}
+
+.hero-section {
+
+}
+
+.tile-section {
+
+  .content {
+    justify-content: space-between;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom:10px;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom:30px;
+  }
+
+  .button {
+    display: inline-block;
+    margin:20px auto 0 auto;
+    background: $lightBlue;
+
+    &:hover {
+      background:$blue;
+    }
+  }
+
+  .tile-section-single-tile {
+    overflow:hidden;
+    position: relative;
+    margin:20px 0px;
+    color:white;
+
+
+    img {
+      position: relative;
+      top:0;
+      width:100%;
+      height:auto;
+      transition:all 0.3s ease-in-out;
+    }
+
+    .hidden-title {
+      position: absolute;
+      width:100%;
+      height:auto;
+      left:0;
+      bottom:-30px;
+      padding:10px 20px;
+      text-align: left;
+      font-weight: 700;
+      background:$lightGray;
+      transition:all 0.3s;
+    }
+
+    .single-tile-info {
+      position: absolute;
+      width:100%;
+      height:auto;
+      left:0;
+      bottom:-100%;
+      padding:20px;
+      background:$lightGray;
+      font-size: 18px;
+      transition:all 0.3s;
+
+      p {
+        width:100%;
+        margin:0;
+      }
+
+      h3 {
+        transform: translateY(-10px);
+        color:white;
+        text-align: left;
+        margin-bottom:0px;
+        font-weight: 700;
+        transition:all 0.3s;
+      }
+
+      .button {
+        display: inline-flex;
+        margin-top:15px;
+        padding:8px 10px;
+        background:white;
+        color:$lightGray;
+      }
+    }
+
+    &:hover {
+
+      img {
+        top:-12%;
+      }
+
+      .hidden-title {
+
+      }
+
+      > .single-tile-info {
+        bottom:0;
+
+        h3 {
+          transform: translateY(0px);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.facts-section {
+
+  .content {
+    padding-bottom:0px;
+  }
+}
+
+.fact-section-single {
+
+  &:nth-of-type(1) {
+    margin-bottom:10px;
+  }
+
+  h2 {
+    margin-bottom:18px;
+  }
+
+  .button {
+    margin-top:24px;
+    margin-bottom:40px;
+  }
+}
+
+.fact-section-image {
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom:0;
+    right:-100px;
+    width:100%;
+    height:auto;
+  }
+}
+
+
+.callout-section {
+
+  .content {
+    padding-top: 54px;
+    padding-bottom: 40px;
+  }
+
+  h2, h4 {
+    text-align: center;
+    color:white;
+  }
+
+  h2 {
+    margin-bottom:20px;
+  }
+
+  img {
+
+  }
+}
+
+.shop-section {
+
+  .content {
+    align-items: center;
+    padding-bottom: 50px;
+  }
+
+  .shop-section-image {
+    text-align: center;
+  }
+
+  .shop-section-words {
+    padding:20px 0px 0px 20px;
+  }
+
+  h2 {
+    margin-bottom:12px;
+  }
+
+  .button {
+    margin-top: 50px;
+  }
+
+  img {
+
+  }
+}
+
+.blog-section {
+
+  .content {
+    justify-content: space-between;
+  }
+
+  h2 {
+    font-size:50px;
+    text-align: center;
+  }
+}
+
+.single-blog-preview {
+  box-shadow: 0px 4px 25px -1px rgba(0,0,0,0.075);
+  margin:40px 0;
+
+  img {
+    width:100%;
+    height:auto;
+  }
+
+  .blog-preview-words {
+    padding:28px 48px;
+  }
+
+  h4 {
+    margin-bottom:18px;
+  }
+
+  .post-excerpt {
+    margin-bottom:34px;
+  }
+
+  .button {
+    text-transform: none;
+    font-size:16px;
+    letter-spacing:0px;
+  }
+}
+
+
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+  .tile-section {
+
+    .tile-section-single-tile {
+      width:48%;
+    }
+  }
+
+  .fact-section-copy {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+
+    .fact-section-single {
+      width:46%;
+    }
+
+    .button {
+      font-size:16px;
+    }
+  }
+
+  .fact-section-image {
+    width:100%;
+    height:300px;
+
+    img {
+      height:100%;
+      width:auto;
+      left:0;
+      right:0;
+      margin:0 auto;
+    }
+  }
+
+  .single-blog-preview {
+
+
+    .blog-preview-words {
+      padding:28px 20px;
+    }
+  }
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+  .tile-section {
+
+    .tile-section-single-tile {
+      width:100%;
+    }
+  }
+
+  .fact-section-copy {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .fact-section-single {
+      width:100%;
+    }
+  }
+}

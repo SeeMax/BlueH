@@ -1,0 +1,11 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="30px" height="43.4px" viewBox="0 0 30 43.4" style="enable-background:new 0 0 30 43.4;"
+	 xml:space="preserve">
+<style type="text/css">
+	.cart-icon-fill{fill:#0A436A;}
+</style>
+<defs>
+</defs>
+<path class="cart-icon-fill" d="M26.7,13.4C26.3,7.2,24.4,0,15,0S3.7,7.2,3.3,13.4H0v30h30v-30H26.7z M15,4c5.5,0,7.3,3.1,7.7,9.4H7.3
+	C7.7,7.1,9.5,4,15,4z"/>
+</svg>

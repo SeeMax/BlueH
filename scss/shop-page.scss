@@ -1,0 +1,84 @@
+@import "colors";
+
+.custom-shop-page {
+
+  p {
+    margin:0;
+  }
+
+  .headline-section {
+      text-align: center;
+
+		.content {
+      margin-top:70px;
+      padding-bottom:50px;
+    }
+
+    h1 {
+      margin-bottom:16px;
+    }
+
+		h2 {
+      margin-bottom:6px;
+    }
+
+    p {
+      font-size:20px;
+      max-width:800px;
+      margin:0 auto;
+    }
+  }
+
+  .products-section {
+
+  }
+
+  .products {
+    align-items:flex-end;
+  }
+
+  .prod-tags {
+    color:$gray;
+  }
+
+  .price {
+    color:$gray;
+  }
+
+  .product {
+    position: relative;
+    text-align: center;
+    padding:24px;
+    margin-bottom:25px;
+
+    h2 {
+      font-size:20px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin:12px auto 14px auto;
+    }
+
+
+    &:hover {
+
+      h2 {
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+  .gurantee-section {
+
+    .content {
+      align-items:center;
+      padding-top:50px;
+      padding-bottom:50px;
+    }
+
+    h2 {
+      color:$lightBlue;
+    }
+  }
+}

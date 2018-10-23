@@ -11,9 +11,8 @@ var pump = require('pump');
 
 gulp.task('browserSync', function() {
   browserSync.init({
-    notify:false,
     proxy: "localhost:8888/blueharvest",
-    port: 5000,
+    port: 3000,
     open: "internal"
   })
 })
@@ -75,13 +74,14 @@ gulp.task('uglify', function () {
 
 
 gulp.task('watch', ['browserSync', 'sass', 'css', 'concat'], function (){
-  gulp.watch('scss/*.scss', ['sass']); 
-  gulp.watch('style.css', ['css']); 
-  gulp.watch('*.php', browserSync.reload); 
-  gulp.watch('partials/*.php', browserSync.reload); 
+  gulp.watch('scss/*.scss', ['sass']);
+  gulp.watch('style.css', ['css']);
+  gulp.watch('*.php', browserSync.reload);
+  gulp.watch('woocommerce/*', browserSync.reload);
+  gulp.watch('partials/*.php', browserSync.reload);
   gulp.watch('js/parts/*.js', ['concat']);
-  gulp.watch('scripts.js', ['lint']); 
-  gulp.watch('js/*.js', browserSync.reload); 
+  gulp.watch('scripts.js', ['lint']);
+  gulp.watch('js/*.js', browserSync.reload);
 });
 
 gulp.task('production', ['minify-css', 'uglify']);

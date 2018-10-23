@@ -1,18 +1,36 @@
-<!-- Copy in to page template -->
-<?php $args = array(
-  'post_type' => '',
-  'posts_per_page' => -1,
-  'order' => 'ASC',
-  'orderby' => 'menu_order'
-); $the_query = new WP_Query($args);?>
-<?php if ($the_query->have_posts()) : ?>
-	<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-		
-		<?php $image = get_field('image'); if( !empty($image) ): ?>
-				<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-		<?php endif; ?>
-		<?php the_field('content');?>
-					
-	<?php endwhile; ?>
-	<?php wp_reset_query(); ?>
-<?php endif; ?>
+<?php
+/**
+ * The loop that displays a page.
+ *
+ * The loop displays the posts and the post content. See
+ * http://codex.wordpress.org/The_Loop to understand it and
+ * http://codex.wordpress.org/Template_Tags to understand
+ * the tags used in it.
+ *
+ * This can be overridden in child themes with loop-page.php.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Ten
+ * @since Twenty Ten 1.2
+ */
+?>
+
+<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+
+				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<?php if ( is_front_page() ) { ?>
+						<h2 class="entry-title"><?php the_title(); ?></h2>
+					<?php } else { ?>
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+					<?php } ?>
+
+					<div class="entry-content">
+						<?php the_content(); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
+						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
+					</div><!-- .entry-content -->
+				</div><!-- #post-## -->
+
+				<?php comments_template( '', true ); ?>
+
+<?php endwhile; // end of the loop. ?>

@@ -1,6 +1,6 @@
 <?php /* Template Name: 404 Page */ get_header(); ?>
 <main class="404-page">
-    <?php while (have_posts()) : the_post(); ?>
+
         <section class="main-section">
             <div class="content">
               <h1><?php the_field('404_error_heading','option'); ?></h1>
@@ -11,7 +11,6 @@
               </div>
             </div>
         </section>
-    <?php endwhile; ?>
+    
 </main>
 <?php get_footer(); ?>
-

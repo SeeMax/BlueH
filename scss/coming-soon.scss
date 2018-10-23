@@ -1,0 +1,25 @@
+.coming-soon {
+  text-align: center;
+
+  header, footer {
+    display: none;
+  }
+
+  section {
+    height:100vh;
+    width:100%;
+
+    .content {
+      height:100%;
+      align-content:center;
+      margin-top:-100px;
+
+      p {
+        margin-bottom:0px;
+      }
+    }
+
+  }
+
+
+}

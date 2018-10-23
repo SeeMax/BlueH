@@ -1,0 +1,296 @@
+@import "colors";
+
+.custom-single-product {
+
+  .prod-tags {
+    color:$gray;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .single-product-left-side {
+    padding-right:140px;
+    margin-bottom:40px;
+  }
+
+  h1 {
+    font-size:30px;
+  }
+
+  .woocommerce-product-gallery__wrapper {
+    height:100%;
+    margin:0;
+  }
+
+  .woocommerce-product-gallery {
+    // width:100%;
+    margin-bottom:70px;
+  }
+
+  .flex-control-nav {
+    list-style:none;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    margin-top:40px;
+    padding:0;
+
+
+    li {
+      width:23%;
+    }
+
+    img {
+      width:100%;
+      height:auto;
+    }
+  }
+
+  .woocommerce-product-gallery__image {
+
+    img {
+      width:100%;
+      height:auto;
+    }
+  }
+
+  .bullet-points {
+
+    li {
+      display: flex;
+      align-items:center;
+      margin-bottom:24px;
+      font-size:20px;
+
+      span {
+        flex:1;
+        width:100%;
+      }
+
+      img {
+        width:80px;
+        height:auto;
+        margin-right:40px;
+      }
+    }
+  }
+
+  .single-product-right-side {
+
+    ul {
+      margin:9px;
+
+      li {
+        text-indent: -8px;
+
+        &:before {
+          content:'–';
+          margin-right:2px;
+        }
+      }
+    }
+  }
+
+
+  .woocommerce-variation-description {
+    display: none;
+  }
+
+  .woocommerce-variation-price {
+    font-size:30px;
+    color:$gray;
+    margin-top:16px;
+    margin-bottom:20px;
+  }
+
+  .variations {
+    display:block;
+  }
+
+  .variations * {
+    display:block;
+  }
+
+  .attribute-pa_sizes .label {
+    width:100%;
+    font-size:20px;
+    color:$gray;
+    text-transform: uppercase;
+  }
+
+  .attribute-pa_sizes .value {
+    width:100%;
+    height:auto;
+    display: flex;
+
+    input[type="radio"] {
+      opacity:0;
+      width:0;
+    }
+
+    div {
+      cursor:pointer;
+      display:inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width:30%;
+      padding:14px 10px;
+      margin-right:30px;
+      margin-top:5px;
+      background:white;
+      color:$blue;
+      transition:all 0.3s;
+
+      label {
+        cursor:pointer;
+        width:100%;
+        height:auto;
+      }
+    }
+
+    .active-size-button {
+      background:$blue;
+      color:white;
+    }
+  }
+  .reset_variations {
+    display: none;
+  }
+
+  .quantity {
+    margin-top:24px;
+    margin-bottom:24px;
+
+    label {
+      display: block;
+      width:100%;
+      font-size: 20px;
+      color:$gray;
+      text-transform: uppercase;
+      margin-bottom:16px;
+    }
+  }
+
+  .button {
+    font-size:16px;
+    letter-spacing:0px;
+    margin-bottom:40px;
+  }
+
+  .single-product-main-description {
+    margin-bottom: 50px;
+  }
+
+  .product-toggle-buttons {
+    display: flex;
+    width:100%;
+
+    .single-product-toggle-button {
+      display: inline-block;
+      cursor:pointer;
+      width:auto;
+      margin-right:34px;
+      border-bottom:2px solid white;
+      padding-bottom:12px;
+      margin-bottom:30px;
+      transition:all 0.3s;
+      color:$gray;
+      font-weight:700;
+    }
+
+    .single-product-active {
+      color:$blue;
+      border-bottom:2px solid $blue;
+    }
+  }
+
+
+  .product-toggle-container {
+    height:100%;
+    position: relative;
+
+    .single-product-toggle {
+      opacity:0;
+      z-index:1;
+      height:auto;
+      transition:all 0.3s;
+    }
+
+    .single-product-active {
+      opacity:1;
+      z-index:3;
+    }
+  }
+}
+
+.single-product {
+  .testimonials-section {
+
+    .content {
+      border-top:1px solid $gray;
+    }
+
+    h2 {
+      color:$lightBlue;
+    }
+
+    p {
+      color:$gray;
+    }
+  }
+}
+
+
+
+
+
+
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+  .custom-single-product {
+
+    .prod-tags {
+      margin-bottom: 20px;
+    }
+
+    .single-product-left-side {
+      padding-right:40px;
+    }
+  }
+
+  .custom-single-product .attribute-pa_sizes .value div{
+    margin-right:1%;
+    width:32%;
+  }
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+  .custom-single-product {
+
+    .single-product-left-side {
+      padding-right:0px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .custom-single-product .product-toggle-buttons .single-product-toggle-button {
+    text-align: center;
+    margin-right:1.3333%;
+    width:32%;
+  }
+
+  .product-footer-section {
+
+    .content {
+
+      p {
+        width:85%;
+      }
+    }
+  }
+}

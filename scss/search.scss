@@ -1,0 +1,34 @@
+@import "colors";
+
+.search-result-page {
+
+}
+
+.single-search-result {
+  position: relative;
+  width:100%;
+  height:auto;
+  display: flex;
+  align-items: center;
+  padding:30px 0px;
+  flex-wrap:wrap;
+  border-bottom:1px solid $lightGray;
+
+  img {
+    margin-right:30px;
+    width: 15%;
+    height: auto;
+  }
+}
+
+.single-result-words {
+
+  .button {
+    margin-top:20px;
+  }
+}
+
+.single-result-excerpt {
+  width:100%;
+  margin-top:8px;
+}

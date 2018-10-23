@@ -1,0 +1,119 @@
+@import "colors";
+
+.cbd101-page {
+
+  .testimonials-section {
+
+    .content {
+
+    }
+
+    h2 {
+      font-size:20px;
+    }
+
+    p {
+      color:$blue;
+    }
+  }
+}
+
+.hero-section {
+  margin-bottom: 30px;
+
+  .content {
+    height:100%;
+    align-content: center;
+  }
+
+  h1 {
+    color:white;
+  }
+
+  h2 {
+    color:white;
+    font-weight:400;
+  }
+}
+
+.main-section {
+
+  .content {
+    padding-bottom: 0px;
+  }
+}
+
+.single-cbd101 {
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom:60px;
+
+  h4 {
+    border-top:3px solid $blue;
+    padding-top:12px;
+  }
+
+  .single-101-body {
+    padding-left:25px;
+
+    p:nth-child(1) {
+      margin-top:0;
+    }
+  }
+
+  &:nth-last-of-type(1) {
+    margin-bottom:0px;
+  }
+}
+
+.shop-now-section {
+
+  .content {
+    align-items:center;
+    padding-top:50px;
+    padding-bottom:50px;
+  }
+
+  .shop-now-image {
+
+  }
+
+  img {
+
+  }
+
+  .shop-now-words {
+    padding-left:25px;
+  }
+
+  h2 {
+    font-weight: 400;
+    max-width:600px;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  .button {
+    margin-top:30px;
+  }
+}
+
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+  .single-cbd101 {
+
+    .single-101-body {
+      padding-left:0px;
+      padding-top:20px;
+    }
+  }
+
+  .shop-now-words {
+    padding-left:0px;
+  }
+}
