@@ -307,6 +307,9 @@ hr {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
+  .hero-section h1, .hero-section h2 {
+    color: white;
+    text-shadow: 0px 2px 12px rgba(50, 50, 50, 0.5); }
 
 .single-blog-preview {
   -webkit-box-shadow: 0px 4px 25px -1px rgba(0, 0, 0, 0.075);
@@ -349,11 +352,7 @@ hr {
   max-width: 1100px; }
 
 .about-page .hero-section h1 {
-  text-align: center;
   margin-bottom: 8px; }
-
-.about-page .hero-section h2 {
-  text-align: center; }
 
 .rethink-section .content {
   padding-bottom: 60px; }
@@ -401,6 +400,59 @@ hr {
 @media screen and (max-width: 767px) {
   .about-page .hero-section {
     height: 640px; } }
+
+.blog-page .hero-section h2 {
+  max-width: 640px; }
+
+.blog-filter-buttons {
+  width: 100%; }
+  .blog-filter-buttons .content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .blog-filter-buttons h2 {
+    font-weight: 400;
+    display: inline-block;
+    width: auto;
+    margin-right: 30px; }
+  .blog-filter-buttons .button {
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 10px;
+    background: white;
+    color: #00426a; }
+    .blog-filter-buttons .button:hover {
+      background: #00426a;
+      color: white; }
+  .blog-filter-buttons .active-cat-button {
+    background: #00426a;
+    color: white; }
+  .blog-filter-buttons .uncategorized-filter {
+    display: none; }
+
+.blog-section .single-blog-preview {
+  display: inline-block; }
+
+.blog-section .grid-sizer {
+  width: 31%;
+  height: 100%; }
+
+.blog-section .gutter-sizer {
+  width: 2%; }
+
+.blog-section .content {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.blog-section h2 {
+  font-size: 50px;
+  text-align: center; }
 
 .cart-popout {
   background: white;
@@ -1366,8 +1418,7 @@ hr {
 
 .contact-page .hero-section h1, .contact-page .hero-section h2 {
   max-width: 550px;
-  margin-left: 0;
-  text-shadow: 0px 2px 12px rgba(50, 50, 50, 0.35); }
+  margin-left: 0; }
 
 .info-form-section .content {
   padding-top: 50px;
@@ -1402,12 +1453,17 @@ hr {
 .form-half .wpcf7 {
   width: 100%;
   text-align: right; }
+  .form-half .wpcf7 label {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    color: #bebfbe; }
 
 .form-half .wpcf7-form-control-wrap input, .form-half .wpcf7-form-control-wrap textarea {
   text-align: left;
   border: 0px solid white;
   border-bottom: 2px solid #00426a;
-  padding: 14px 0px;
+  padding: 6px 0px;
   width: 100% !important;
   color: #00426a;
   margin-bottom: 30px; }
@@ -1733,6 +1789,20 @@ hr {
     .payment-types i {
       margin-right: 3px;
       font-size: 28px; } }
+
+.promo-container {
+  position: relative;
+  background: #00426a;
+  padding: 12px;
+  z-index: 1000; }
+  .promo-container h4 {
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    line-height: 1.2; }
+  .promo-container p {
+    margin: 0;
+    max-width: 1150px; }
 
 .header {
   position: fixed;
@@ -2502,75 +2572,15 @@ hr {
             -ms-flex-pack: start;
                 justify-content: flex-start; } }
 
-.blog-page .hero-section .content {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-
-.blog-page .hero-section h1, .blog-page .hero-section h2 {
-  text-align: center;
-  color: #00426a;
-  text-shadow: 0px 0px #FFFFFF; }
-
-.blog-page .hero-section h2 {
-  max-width: 540px; }
-
-.blog-filter-buttons {
-  width: 100%; }
-  .blog-filter-buttons .content {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start; }
-  .blog-filter-buttons h2 {
-    font-weight: 400;
-    display: inline-block;
-    width: auto;
-    margin-right: 30px; }
-  .blog-filter-buttons .button {
-    display: inline-block;
-    font-size: 18px;
-    margin-right: 10px;
-    background: white;
-    color: #00426a; }
-    .blog-filter-buttons .button:hover {
-      background: #00426a;
-      color: white; }
-  .blog-filter-buttons .active-cat-button {
-    background: #00426a;
-    color: white; }
-  .blog-filter-buttons .uncategorized-filter {
-    display: none; }
-
-.blog-section .single-blog-preview {
-  display: inline-block; }
-
-.blog-section .grid-sizer {
-  width: 31%;
-  height: 100%; }
-
-.blog-section .gutter-sizer {
-  width: 2%; }
-
-.blog-section .content {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
-
-.blog-section h2 {
-  font-size: 50px;
-  text-align: center; }
-
 .press-page .hero-section {
   margin-bottom: 0; }
+  .press-page .hero-section .content {
+    max-width: 430px;
+    margin-right: auto;
+    margin-left: 0; }
   .press-page .hero-section .headlines {
     width: 100%;
-    height: 100%;
-    max-width: 430px; }
+    height: 100%; }
   .press-page .hero-section h1 {
     margin-bottom: 10px; }
   .press-page .hero-section h2 {
@@ -2669,12 +2679,6 @@ hr {
     height: 100%;
     -ms-flex-line-pack: center;
         align-content: center; }
-  .shipping-returns-page .hero-section h1 {
-    color: white;
-    text-shadow: 0px 2px 12px rgba(50, 50, 50, 0.65); }
-  .shipping-returns-page .hero-section h2 {
-    color: white;
-    font-weight: 400; }
   .shipping-returns-page .hero-section p {
     margin: 0; }
 

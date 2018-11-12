@@ -415,35 +415,46 @@ add_filter('upload_mimes', 'cc_mime_types');
 /*	ACF GLOBAL OPTIONS */
 
 if (function_exists('acf_add_options_page')) {
-    acf_add_options_page(array(
-        'page_title'    => 'Global Options',
-        'menu_title'    => 'Global Options',
-        'menu_slug'    => 'global_options',
-        'capability'    => 'edit_posts',
-        'redirect'    => false,
-        'icon_url' => 'dashicons-media-spreadsheet',
-        'position' => 5
-    ));
 
-    acf_add_options_page(array(
-        'page_title'    => 'Hero Slider',
-        'menu_title'    => 'Hero Slider',
-        'menu_slug'    => 'hero_slider',
-        'capability'    => 'edit_posts',
-        'redirect'    => false,
-        'icon_url' => 'dashicons-images-alt',
-        'position' => 6
-    ));
+  acf_add_options_page(array(
+      'page_title'    => 'Promo Bar',
+      'menu_title'    => 'Promo Bar',
+      'menu_slug'    => 'promo_bar',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-megaphone',
+      'position' => 4
+  ));
 
-    acf_add_options_page(array(
-        'page_title'    => 'Email Footer',
-        'menu_title'    => 'Email Footer',
-        'menu_slug'    => 'email_footer',
-        'capability'    => 'edit_posts',
-        'redirect'    => false,
-        'icon_url' => 'dashicons-email',
-        'position' => 7
-    ));
+  acf_add_options_page(array(
+      'page_title'    => 'Global Options',
+      'menu_title'    => 'Global Options',
+      'menu_slug'    => 'global_options',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-media-spreadsheet',
+      'position' => 5
+  ));
+
+  acf_add_options_page(array(
+      'page_title'    => 'Hero Slider',
+      'menu_title'    => 'Hero Slider',
+      'menu_slug'    => 'hero_slider',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-images-alt',
+      'position' => 6
+  ));
+
+  acf_add_options_page(array(
+      'page_title'    => 'Email Footer',
+      'menu_title'    => 'Email Footer',
+      'menu_slug'    => 'email_footer',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-email',
+      'position' => 7
+  ));
 }
     /*  ACF GLOBAL	*/
 
@@ -715,26 +726,28 @@ $emoji_svg_url = apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emo
 
 
 // // Remove Wordpress Menu Items
-// function remove_menus(){
-//
-//   if ( is_user_logged_in() ) {
-//     $current_user = wp_get_current_user();
-//     if (!in_array($current_user->ID, array(1))) {
-//
-//       remove_menu_page( 'edit.php' );                  //Posts
-//       remove_menu_page( 'index.php' );                  //Dashboard
-//     //   remove_menu_page( 'jetpack' );                    //Jetpack*
-//       remove_menu_page( 'edit-comments.php' );          //Comments
-//       remove_menu_page( 'themes.php' );                 //Appearance
-//       remove_menu_page( 'plugins.php' );                //Plugins
-//     //   // remove_menu_page( 'users.php' );                  //Users
-//       remove_menu_page( 'tools.php' );                  //Tools
-//     //   remove_menu_page( 'options-general.php' );        //Settings
-//       remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
-//     }
-//   }
-// }
-// add_action( 'admin_menu', 'remove_menus', 9999);
+function remove_menus(){
+
+    remove_menu_page( 'themes.php' );                  //Users
+
+  if ( is_user_logged_in() ) {
+    $current_user = wp_get_current_user();
+    if (!in_array($current_user->ID, array(1))) {
+
+    //   remove_menu_page( 'edit.php' );                  //Posts
+    //   remove_menu_page( 'index.php' );                  //Dashboard
+    // //   remove_menu_page( 'jetpack' );                    //Jetpack*
+    //   remove_menu_page( 'edit-comments.php' );          //Comments
+    //   remove_menu_page( 'themes.php' );                 //Appearance
+    //   remove_menu_page( 'plugins.php' );                //Plugins
+    // //   // remove_menu_page( 'users.php' );                  //Users
+    //   remove_menu_page( 'tools.php' );                  //Tools
+    // //   remove_menu_page( 'options-general.php' );        //Settings
+    //   remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
+    }
+  }
+}
+add_action( 'admin_menu', 'remove_menus', 9999);
 
 /*	DISABLE XMLRPC 	*/
 add_filter('xmlrpc_enabled', '__return_false');
@@ -935,3 +948,46 @@ function custom_quantity_fields_script(){
  */
 
 add_filter( 'wc_add_to_cart_message_html', '__return_null' );
+
+
+add_filter('woocommerce_show_variation_price', function() {return true;});
+
+
+add_action('admin_menu', 'change_menus_position');
+function change_menus_position() {
+
+    // Remove old menu
+    remove_submenu_page( 'themes.php', 'nav-menus.php' );
+
+    //Add new menu page
+     add_menu_page(
+       'Menus',
+       'Menus',
+       'edit_theme_options',
+       'nav-menus.php',
+       '',
+       'dashicons-list-view',
+       60
+    );
+}
+
+
+add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
+
+function add_loginout_link( $items, $args ) {
+
+  if (is_user_logged_in() && $args->theme_location == 'header-menu') {
+
+   $items .= '<li class="mobile-menu-only"><a href="'. wp_logout_url( get_permalink( woocommerce_get_page_id( 'myaccount' ) ) ) .'">Account</a></li>';
+
+  }
+
+  elseif (!is_user_logged_in() && $args->theme_location == 'header-menu') {
+
+   $items .= '<li class="mobile-menu-only"><a href="' . get_permalink( wc_get_page_id( 'myaccount' ) ) . '">Login</a></li>';
+
+  }
+
+  return $items;
+
+}

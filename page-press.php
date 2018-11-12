@@ -5,10 +5,10 @@
 		<section class="hero-section background-image-section"
 			style='background-image:url("<?php echo $heroBackground['url'];?>");'>
 			<div class="content">
-				<div class="headlines">
+
 					<h1><?php the_field('hero_headline', false, false);?></h1>
 					<h2><?php the_field('hero_subheadline');?></h2>
-				</div>
+				
       </div>
     </section>
 		<section class="news-section">

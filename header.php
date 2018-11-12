@@ -24,6 +24,11 @@
 </div> -->
 	<header class="header" role="banner">
 		<?php get_template_part('partials/_cart-popout');?>
+		<?php if ( get_field( 'display_promo','option' ) ): ?>
+			<div class="promo-container">
+				<h4><?php the_field('promo_copy','option');?></h4>
+			</div>
+		<?php endif; // end of if field_name logic ?>
 		<div class="content header-inner-wrap">
 			<div class="mobile-menu mobileToggle">
 				<span class="hamTop"></span>
@@ -32,7 +37,7 @@
 			</div>
 			<div class="header-logo">
 				<a href="<?php echo site_url();?>">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/temp-logo.svg" >
+					<img src="<?php echo get_template_directory_uri(); ?>/img/bh-logo.svg" >
 				</a>
 			</div>
 			<nav class="main-nav mainNav" role="navigation">
@@ -40,7 +45,11 @@
 				<ul class="right-menu-list">
 					<li class="desktop-menu-only">
 						<a class="c-block-fill" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"></a>
-						Login
+						<?php if (is_user_logged_in()):?>
+							Account
+						<?php else:?>
+							Login
+						<?php endif;?>
 					</li>
 					<li class="cart-trigger cartTrigger ">
 						<?php global $woocommerce; ?>

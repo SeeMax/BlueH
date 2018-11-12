@@ -15,7 +15,6 @@
     h1, h2 {
       max-width:550px;
       margin-left:0;
-      text-shadow: 0px 2px 12px rgba(50, 50, 50, 0.35);
     }
   }
 }
@@ -72,20 +71,30 @@
   .wpcf7 {
     width:100%;
     text-align: right;
+
+    label {
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+      color:$lightGray;
+    }
   }
 
-  .wpcf7-form-control-wrap input, .wpcf7-form-control-wrap textarea{
-    text-align: left;
-    border:0px solid white;
-    border-bottom:2px solid $blue;
-    padding:14px 0px;
-    width:100% !important;
-    color:$blue;
-    margin-bottom:30px;
+  .wpcf7-form-control-wrap {
 
-    &::placeholder {
+    input, textarea{
+      text-align: left;
+      border:0px solid white;
+      border-bottom:2px solid $blue;
+      padding:6px 0px;
+      width:100% !important;
       color:$blue;
-      opacity:1;
+      margin-bottom:30px;
+
+      &::placeholder {
+        color:$blue;
+        opacity:1;
+      }
     }
   }
 
