@@ -33,21 +33,13 @@ if ( $show_downloads ) {
 	wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
 }
 ?>
-<section class="woocommerce-order-details">
+<section class="custom-woocommerce-order-details woocommerce-order-details">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
 	<h2 class="woocommerce-order-details__title"><?php _e( 'Order details', 'woocommerce' ); ?></h2>
 
-	<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
-
-		<thead>
-			<tr>
-				<th class="woocommerce-table__product-name product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
-				<th class="woocommerce-table__product-table product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
-			</tr>
-		</thead>
-
-		<tbody>
+	<div class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+		<div class="product-orders-group">
 			<?php
 			do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
@@ -66,27 +58,28 @@ if ( $show_downloads ) {
 
 			do_action( 'woocommerce_order_details_after_order_table_items', $order );
 			?>
-		</tbody>
+		</div>
 
-		<tfoot>
+
+		<div>
 			<?php
 				foreach ( $order->get_order_item_totals() as $key => $total ) {
 					?>
-					<tr>
-						<th scope="row"><?php echo $total['label']; ?></th>
-						<td><?php echo $total['value']; ?></td>
-					</tr>
+						<div class="order-recap-row">
+							<h5><?php echo $total['label']; ?></h5>
+							<div><?php echo $total['value']; ?></div>
+						</div>
 					<?php
 				}
 			?>
 			<?php if ( $order->get_customer_note() ) : ?>
-				<tr>
-					<th><?php _e( 'Note:', 'woocommerce' ); ?></th>
-					<td><?php echo wptexturize( $order->get_customer_note() ); ?></td>
-				</tr>
+				<div>
+					<div><?php _e( 'Note:', 'woocommerce' ); ?></div>
+					<div><?php echo wptexturize( $order->get_customer_note() ); ?></div>
+				</div>
 			<?php endif; ?>
-		</tfoot>
-	</table>
+		</div>
+	</div>
 
 	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 </section>

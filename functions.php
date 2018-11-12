@@ -269,11 +269,11 @@ function theme_header_scripts() {
     // wp_register_script('DrawSVGPlugin', get_template_directory_uri() . '/js/lib/DrawSVGPlugin.min.js', array(), '0.1.3', true);
     // wp_enqueue_script('DrawSVGPlugin');
 
-    // wp_register_script('imagesLoaded', get_template_directory_uri() . '/js/lib/imagesLoaded.js', array(), '4.1.1', true);
-    // wp_enqueue_script('imagesLoaded');
+    wp_register_script('imagesLoaded', get_template_directory_uri() . '/js/lib/imagesLoaded.js', array(), '4.1.1', true);
+    wp_enqueue_script('imagesLoaded');
 
-    // wp_register_script('isotope', get_template_directory_uri() . '/js/lib/isotope.js', array(), '3.0.4', true);
-    //  wp_enqueue_script('isotope'); // Enqueue it!
+    wp_register_script('isotope', get_template_directory_uri() . '/js/lib/isotope.js', array(), '3.0.4', true);
+     wp_enqueue_script('isotope'); // Enqueue it!
 
     // wp_register_script('lightbox', get_template_directory_uri() . '/js/lib/lity.min.js', array(), '', true);
     // wp_enqueue_script('lightbox'); // Enqueue it!
@@ -501,6 +501,21 @@ add_action('init', 'create_post_type');
              'menu_position' => 9,
          )
      );
+
+     register_post_type('news',
+     // CPT Options
+         array(
+             'labels' => array(
+                 'name' => __('News'),
+                 'singular_name' => __('News')
+             ),
+             'public' => true,
+             'menu_icon' => 'dashicons-editor-table',
+             'has_archive' => true,
+             'supports' => array('title','editor'),
+             'menu_position' => 10,
+         )
+     );
  }
 
 
@@ -699,27 +714,27 @@ $emoji_svg_url = apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emo
 }
 
 
-// Remove Wordpress Menu Items
-function remove_menus(){
-
-  if ( is_user_logged_in() ) {
-    $current_user = wp_get_current_user();
-    if (!in_array($current_user->ID, array(1))) {
-
-      remove_menu_page( 'edit.php' );                  //Posts
-      remove_menu_page( 'index.php' );                  //Dashboard
-    //   remove_menu_page( 'jetpack' );                    //Jetpack*
-      remove_menu_page( 'edit-comments.php' );          //Comments
-      remove_menu_page( 'themes.php' );                 //Appearance
-      remove_menu_page( 'plugins.php' );                //Plugins
-    //   // remove_menu_page( 'users.php' );                  //Users
-      remove_menu_page( 'tools.php' );                  //Tools
-    //   remove_menu_page( 'options-general.php' );        //Settings
-      remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
-    }
-  }
-}
-add_action( 'admin_menu', 'remove_menus', 9999);
+// // Remove Wordpress Menu Items
+// function remove_menus(){
+//
+//   if ( is_user_logged_in() ) {
+//     $current_user = wp_get_current_user();
+//     if (!in_array($current_user->ID, array(1))) {
+//
+//       remove_menu_page( 'edit.php' );                  //Posts
+//       remove_menu_page( 'index.php' );                  //Dashboard
+//     //   remove_menu_page( 'jetpack' );                    //Jetpack*
+//       remove_menu_page( 'edit-comments.php' );          //Comments
+//       remove_menu_page( 'themes.php' );                 //Appearance
+//       remove_menu_page( 'plugins.php' );                //Plugins
+//     //   // remove_menu_page( 'users.php' );                  //Users
+//       remove_menu_page( 'tools.php' );                  //Tools
+//     //   remove_menu_page( 'options-general.php' );        //Settings
+//       remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
+//     }
+//   }
+// }
+// add_action( 'admin_menu', 'remove_menus', 9999);
 
 /*	DISABLE XMLRPC 	*/
 add_filter('xmlrpc_enabled', '__return_false');
@@ -809,18 +824,18 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_re
 add_theme_support( 'html5', array( 'search-form' ) );
 
 
-add_action('add_to_cart_redirect', 'resolve_dupes_add_to_cart_redirect');
-
-function resolve_dupes_add_to_cart_redirect($url = false) {
-
-     // If another plugin beats us to the punch, let them have their way with the URL
-     if(!empty($url)) { return $url; }
-
-     // Redirect back to the original page, without the 'add-to-cart' parameter.
-     // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
-     return get_bloginfo('wpurl').add_query_arg(array(), remove_query_arg('add-to-cart'));
-
-}
+// add_action('add_to_cart_redirect', 'resolve_dupes_add_to_cart_redirect');
+//
+// function resolve_dupes_add_to_cart_redirect($url = false) {
+//
+//      // If another plugin beats us to the punch, let them have their way with the URL
+//      if(!empty($url)) { return $url; }
+//
+//      // Redirect back to the original page, without the 'add-to-cart' parameter.
+//      // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
+//      return get_bloginfo('wpurl').add_query_arg(array(), remove_query_arg('add-to-cart'));
+//
+// }
 
 add_action( 'after_setup_theme', 'yourtheme_setup' );
 
@@ -829,3 +844,94 @@ function yourtheme_setup() {
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 }
+
+function disable_shipping_calc_on_cart( $show_shipping ) {
+    if( is_cart() ) {
+        return false;
+    }
+    return $show_shipping;
+}
+add_filter( 'woocommerce_cart_ready_to_calc_shipping', 'disable_shipping_calc_on_cart', 99 );
+
+// Minimum CSS to remove +/- default buttons on input field type number
+add_action( 'wp_head' , 'custom_quantity_fields_css' );
+function custom_quantity_fields_css(){
+    ?>
+    <style>
+    .quantity input::-webkit-outer-spin-button,
+    .quantity input::-webkit-inner-spin-button {
+        display: none;
+        margin: 0;
+    }
+    .quantity input.qty {
+        appearance: textfield;
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+    }
+    </style>
+    <?php
+}
+
+
+add_action( 'wp_footer' , 'custom_quantity_fields_script' );
+function custom_quantity_fields_script(){
+    ?>
+    <script type='text/javascript'>
+    jQuery( function( $ ) {
+        if ( ! String.prototype.getDecimals ) {
+            String.prototype.getDecimals = function() {
+                var num = this,
+                    match = ('' + num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+                if ( ! match ) {
+                    return 0;
+                }
+                return Math.max( 0, ( match[1] ? match[1].length : 0 ) - ( match[2] ? +match[2] : 0 ) );
+            }
+        }
+        // Quantity "plus" and "minus" buttons
+        $( document.body ).on( 'click', '.plus, .minus', function() {
+            var $qty        = $( this ).closest( '.quantity' ).find( '.qty'),
+                currentVal  = parseFloat( $qty.val() ),
+                max         = parseFloat( $qty.attr( 'max' ) ),
+                min         = parseFloat( $qty.attr( 'min' ) ),
+                step        = $qty.attr( 'step' );
+
+            // Format values
+            if ( ! currentVal || currentVal === '' || currentVal === 'NaN' ) currentVal = 0;
+            if ( max === '' || max === 'NaN' ) max = '';
+            if ( min === '' || min === 'NaN' ) min = 0;
+            if ( step === 'any' || step === '' || step === undefined || parseFloat( step ) === 'NaN' ) step = 1;
+
+            // Change the value
+            if ( $( this ).is( '.plus' ) ) {
+                if ( max && ( currentVal >= max ) ) {
+                    $qty.val( max );
+                } else {
+                    $qty.val( ( currentVal + parseFloat( step )).toFixed( step.getDecimals() ) );
+                }
+            } else {
+                if ( min && ( currentVal <= min ) ) {
+                    $qty.val( min );
+                } else if ( currentVal > 0 ) {
+                    $qty.val( ( currentVal - parseFloat( step )).toFixed( step.getDecimals() ) );
+                }
+            }
+
+            // Trigger change event
+            $qty.trigger( 'change' );
+        });
+    });
+    </script>
+    <?php
+}
+
+
+/**
+ * @snippet       Remove "added to your cart" message
+ * @how-to        Watch tutorial @ https://businessbloomer.com/?p=19055
+ * @sourcecode    https://businessbloomer.com/?p=494
+ * @author        Rodolfo Melogli
+ * @testedwith    WooCommerce 3.4.7
+ */
+
+add_filter( 'wc_add_to_cart_message_html', '__return_null' );

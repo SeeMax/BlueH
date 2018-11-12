@@ -100,7 +100,7 @@
 								<?php the_title();?>
 							</h4>
 							<div class="post-excerpt">
-								<?php the_excerpt();?>
+								<?php html5wp_excerpt('html5wp_index');?>
 							</div>
 							<div class="button blue-button">
 								<a href="<?php the_permalink();?>"></a>

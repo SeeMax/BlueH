@@ -1,5 +1,31 @@
 (function ($, root, undefined) {$(function () {
 'use strict';
+var $grid = $('.blogGrid .content').isotope({
+
+    layoutMode: 'fitRows',
+    itemSelector: '.single-blog-preview',
+    percentPosition: true,
+    fitRows: {
+      gutter: '.gutter-sizer'
+    }
+});
+// layout Isotope after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.isotope('layout');
+});
+
+$('*[data-filter=".filter-uncategorized"]').hide();
+
+
+$('.blog-filter-buttons').on( 'click', '.button', function() {
+  var filterValue = $(this).attr('data-filter');
+  console.log(filterValue);
+  $grid.isotope({ filter: filterValue });
+
+  $('.blog-filter-buttons .button').removeClass('active-cat-button');
+  $(this).addClass('active-cat-button');
+});
+
 (function menuStuff() {
 
   $('.cartTrigger').on("click", function() {
@@ -22,6 +48,39 @@
 
 
 }());
+
+$('.question-answer-single-q').on('click', function() {
+
+  var $this = $(this);
+  var toggle = $this.find('.faqToggle');
+  var answerBox = $this.parent().find('.question-answer-single-a');
+  var answerHeight = $this.parent().find('.single-a-inner').height();
+  // Add the paragraph 1em padidng on both sides of 16px
+  var animateHeight = answerHeight + 32;
+  var tl = new TimelineMax();
+  var uniEase = Power2.easeInOut;
+
+
+  if ($this.hasClass('openToggle')) {
+    $this.removeClass('openToggle');
+    tl.to(answerBox, 0.23, {height:0, ease: uniEase}, "toggle1");
+    tl.to(toggle, 0.23, {rotation:0, transformOrigin:'50% 50%', ease: uniEase}, "toggle1");
+  } else {
+    $this.addClass('openToggle');
+    tl.to(answerBox, 0.23, {height:animateHeight, ease: uniEase}, "toggle2");
+    tl.to(toggle, 0.23, {rotation:45, transformOrigin:'50% 50%', ease: uniEase}, "toggle2");
+  }
+
+});
+
+$('.woocommerce-form-login').find("input[type=text], input[type=password]").each(function()
+ {
+     if(!$(this).val()) {
+       var placeHold = $(this).attr("name");
+
+    $(this).attr("placeholder", placeHold);
+ }
+ });
 
 //USE THE BELOW AS TEMPLATE FOR FUNCTION FILES
 
@@ -78,6 +137,23 @@ var colorDarkGray = '#3f4444';
 (function menuStuff() {
 
 
+  function headerPadding() {
+    var tl = new TimelineMax();
+    var headerHeight = $('.header').height();
+
+    if ($('.custom-single-product').length) {
+      tl.set($('.custom-single-product'), {marginTop:headerHeight});
+    } else {
+      tl.set($('main'), {marginTop:headerHeight});
+    }
+
+  }
+
+  headerPadding();
+
+  $(window).on('resize', function(){
+    headerPadding();
+  });
 
   $('.searchIcon').on('click', function(event) {
     event.preventDefault();
@@ -131,7 +207,7 @@ var colorDarkGray = '#3f4444';
   });
 
 
-  if ($(window).width() < 1024) {
+  if ($(window).width() < 1025) {
 
     $('.left-menu-list li').on('click', function(event) {
 

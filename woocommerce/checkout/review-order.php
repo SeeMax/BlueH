@@ -21,12 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <table class="shop_table woocommerce-checkout-review-order-table">
-	<thead>
+	<!-- <thead>
 		<tr>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
 		</tr>
-	</thead>
+	</thead> -->
 	<tbody>
 		<?php
 			do_action( 'woocommerce_review_order_before_cart_contents' );
@@ -38,8 +38,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 						<td class="product-name">
-							<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; ?>
-							<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
+							<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <div class="product-quantity">' . sprintf( '%s', $cart_item['quantity'] ) . '</div>', $cart_item, $cart_item_key ); ?>
+							<?php echo apply_filters( 'woocommerce_cart_item_name', ' <div class="product-single-name">' . $_product->get_name(), $cart_item, $cart_item_key ) . '</div>'; ?>
 							<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
 						</td>
 						<td class="product-total">
@@ -62,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-				<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
+				<th><?php wc_cart_totals_coupon_label( $code );?></th>
 				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>

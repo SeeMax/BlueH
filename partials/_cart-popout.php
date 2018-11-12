@@ -19,7 +19,7 @@
         <?php $itemTotal = $price * $totalCount;?>
         <?php $variation_data = $_product->get_variation_attributes();?>
         <?php $variation_detail = woocommerce_get_formatted_variation( $variation_data, true );?>
-        <?php echo $getProductDetail->get_image(); // accepts 2 arguments ( size, attr )?>
+        <?php echo $getProductDetail->get_image('medium'); // accepts 2 arguments ( size, attr )?>
         <div class="sp-item-content">
           <div class="cart-pop-quantity">
             <?php echo $totalCount?>
@@ -32,9 +32,13 @@
         </div>
       </div>
     <?php endforeach;?>
-    <div class="button">
+    <div class="button view-cart-button">
       <a class="c-block-fill" href="<?php echo wc_get_cart_url(); ?>"></a>
       View Cart
+    </div>
+    <div class="button checkout-button">
+      <a class="c-block-fill" href="<?php echo wc_get_checkout_url(); ?>"></a>
+      Checkout
     </div>
   <?php endif;?>
 </div>

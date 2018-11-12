@@ -1,0 +1,140 @@
+@import "colors";
+
+.woocommerce-MyAccount-navigation {
+  text-align: center;
+  margin-bottom:22px;
+
+  ul {
+    margin-bottom:12px;
+  }
+
+  li {
+    display: inline-block;
+    background: $blue;
+    color:white;
+    padding:5px 8px;
+    margin-right:5px;
+    margin-bottom:8px;
+
+    a {
+      color:white;
+    }
+  }
+
+  p, a {
+    text-align: center;
+  }
+}
+
+.woocommerce-MyAccount-content {
+
+}
+
+.account-details-hero {
+  margin-bottom:20px;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.account-detail-abilities {
+
+  a {
+    display: block;
+    text-decoration: underline;
+    margin:4px 0px;
+  }
+}
+
+.woocommerce-Addresses {
+
+  address {
+    font-style: normal;
+  }
+
+  .edit {
+    color:$lightGray;
+    text-decoration: underline;
+  }
+
+  header {
+    margin:10px 0 6px 0;
+  }
+
+  h3 {
+    font-weight: 700;
+  }
+}
+
+.woocommerce-address-fields__field-wrapper {
+  margin-bottom:50px;
+  max-width:400px;
+
+  label {
+    display: block;
+  }
+
+  input {
+    border-bottom: 2px solid $blue;
+    padding:2px;
+  }
+}
+
+// .woocommerce-orders-table {
+//
+//   td {
+//     padding:5px 10px 5px 0px;
+//     border-bottom:1px solid $gray;
+//   }
+//
+//   tr {
+//     border-bottom:1px solid $gray;
+//   }
+// }
+
+.woocommerce-orders-table__cell {
+  a {
+    margin-right:5px;
+  }
+}
+
+.woocommerce-EditAccountForm  {
+
+  input {
+    border-bottom: 2px solid $blue;
+    padding:2px;
+  }
+}
+
+
+.woocommerce-table--order-details {
+
+  tbody {
+    padding-bottom:80px;
+  }
+
+  th, td {
+    text-align: left;
+    padding-right:10px;
+  }
+}
+
+.woocommerce-EditAccountForm {
+
+  label {
+    display: block;
+  }
+
+  em {
+    margin-top:6px;
+    display: block;
+    color:$lightGray;
+  }
+}
+
+.woocommerce-Address-title {
+  h2 {
+    color:$gray;
+  }
+}

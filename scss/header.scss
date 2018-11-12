@@ -1,11 +1,14 @@
 @import "colors";
 
 .header {
-	position: relative;
+	position: fixed;
+	top:0;
+	left:0;
 	width:100%;
 	height:auto;
 	font-weight: 700;
 	background:white;
+	z-index:1000;
 
 	.content {
 		background:white;

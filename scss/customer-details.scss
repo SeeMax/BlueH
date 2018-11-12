@@ -1,0 +1,18 @@
+@import "colors";
+
+.woocommerce-customer-details {
+
+  h2 {
+    color:$gray;
+    margin-bottom:10px;
+  }
+}
+
+.woocommerce-column--billing-address, .woocommerce-column--shipping-address {
+  border-top: 1px solid $lightGray;
+  padding:10px 0px;
+
+  i, cite, em, var, address, dfn {
+    font-style:normal;
+  }
+}

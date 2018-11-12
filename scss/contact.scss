@@ -1,0 +1,138 @@
+@import "colors";
+
+.contact-page {
+
+
+  .hero-section {
+
+    .content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+
+    h1, h2 {
+      max-width:550px;
+      margin-left:0;
+      text-shadow: 0px 2px 12px rgba(50, 50, 50, 0.35);
+    }
+  }
+}
+
+
+.info-form-section {
+
+  .content {
+    padding-top:50px;
+    padding-bottom: 70px;
+  }
+}
+
+.info-half {
+  margin-bottom:30px;
+
+  .content {
+    padding-right:50px;
+  }
+
+  .main-h2 {
+    color:$lightBlue;
+    max-width: 280px;
+    margin-bottom:26px;
+  }
+
+  .button {
+    margin-top:26px;
+    font-size:18px;
+  }
+}
+
+
+.contact-details {
+  font-size:20px;
+  margin-bottom:10px;
+  line-height: 1.5;
+}
+
+.contact-detail-title {
+  font-weight:700;
+  text-transform: uppercase;
+}
+
+.info-notes {
+  line-height: 1.5;
+  font-size:20px;
+  margin-bottom:70px;
+}
+
+
+.form-half {
+
+  .wpcf7 {
+    width:100%;
+    text-align: right;
+  }
+
+  .wpcf7-form-control-wrap input, .wpcf7-form-control-wrap textarea{
+    text-align: left;
+    border:0px solid white;
+    border-bottom:2px solid $blue;
+    padding:14px 0px;
+    width:100% !important;
+    color:$blue;
+    margin-bottom:30px;
+
+    &::placeholder {
+      color:$blue;
+      opacity:1;
+    }
+  }
+
+
+
+   .wpcf7-submit {
+     cursor: pointer;
+     display: inline-block;
+     position: relative;
+     font:400 18px/1 'Montserrat', sans-serif;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     background:$blue;
+     color:white;
+     padding:14px 28px;
+     border:0px solid white;
+     transition:all 0.3s ease-in;
+     transform:translateX(20px);
+
+     &:hover {
+       background:$lightBlue;
+
+       a {
+         color:$blue;
+       }
+     }
+   }
+
+   .ajax-loader {
+     transform:translateX(16px);
+   }
+}
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+  .contact-details {
+    font-size:18px;
+  }
+
+  .info-notes {
+    font-size:18px;
+  }
+
+}

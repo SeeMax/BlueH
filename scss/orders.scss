@@ -1,0 +1,114 @@
+@import "colors";
+
+.my-main-order-table {
+  width:100%;
+
+  td,tr,thead,th,tbody,tfoot {
+    display: inline-block;
+  }
+
+  thead, tbody {
+    width:100%;
+
+    tr {
+      width:100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border-bottom: 1px solid $lightGray;
+    }
+
+    th,td {
+      display: flex;
+      align-items: center;
+      width:15%;
+    }
+
+    .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+      width:40%;
+      justify-content: center;
+      margin:6px 0;
+
+      a {
+       font-size:14px;
+       padding:10px 14px;
+      }
+    }
+  }
+}
+
+.custom-woocommerce-order-details {
+  border-top: 1px solid $lightGray;
+  padding:10px 0px;
+
+  h2 {
+    color:$gray;
+    margin-bottom:10px;
+  }
+}
+
+.order-recap-row {
+  margin-bottom:6px;
+}
+
+.product-orders-group {
+
+  h3 {
+    margin-bottom: 6px;
+  }
+}
+
+.woocommerce-orders-table__cell-order-total {
+
+  .woocommerce-Price-amount {
+    padding-right:6px;
+  }
+}
+
+@media screen and (max-width: 767px){
+
+  .my-main-order-table {
+    width:100%;
+
+    td,tr,thead,th,tbody,tfoot {
+      display: inline-block;
+    }
+
+    thead, tbody {
+      width:100%;
+
+      tr {
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        border-bottom: 1px solid $lightGray;
+      }
+
+      th,td {
+        display: flex;
+        align-items: center;
+        width:30%;
+      }
+
+      .woocommerce-orders-table__row {
+        padding: 10px 0px;
+        padding: 10px 0px;
+      }
+
+      .woocommerce-orders-table__cell-order-date, .woocommerce-orders-table__header-order-date {
+        width:70%;
+      }
+
+      .woocommerce-orders-table__header-order-total, .woocommerce-orders-table__cell-order-total {
+        width:50%;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .woocommerce-orders-table__header-order-actions, .woocommerce-orders-table__cell-order-actions {
+        justify-content: flex-start;
+      }
+    }
+  }
+}

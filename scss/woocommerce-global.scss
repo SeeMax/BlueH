@@ -1,0 +1,35 @@
+@import "colors";
+
+.woocommerce {
+  width:100%;
+  padding-bottom:100px;
+}
+
+.woocommerce form .form-row .required {
+  text-decoration: none;
+}
+
+.woocommerce-error, .woocommerce-message {
+  width:100%;
+  height:auto;
+  background: $lightBlue;
+  text-align: center;
+  padding:20px 60px;
+  margin-bottom:30px;
+  font:400 20px/1 'Montserrat', sans-serif;
+  color:white;
+}
+
+.woocommerce-error {
+  background: red;
+}
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+}
