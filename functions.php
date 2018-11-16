@@ -427,8 +427,8 @@ if (function_exists('acf_add_options_page')) {
   ));
 
   acf_add_options_page(array(
-      'page_title'    => 'Global Options',
-      'menu_title'    => 'Global Options',
+      'page_title'    => 'Company Info',
+      'menu_title'    => 'Company Info',
       'menu_slug'    => 'global_options',
       'capability'    => 'edit_posts',
       'redirect'    => false,
@@ -454,6 +454,14 @@ if (function_exists('acf_add_options_page')) {
       'redirect'    => false,
       'icon_url' => 'dashicons-email',
       'position' => 7
+  ));
+
+  // ADD SUB OPTION ON TESTIMONIAL PAGE
+  acf_add_options_sub_page(array(
+      'page_title'     => 'Testimonial On/Off',
+      'menu_title'    => 'Testimonial On/Off',
+      'parent_slug'    => 'edit.php?post_type=testimonial',
+      'position' => 1
   ));
 }
     /*  ACF GLOBAL	*/
@@ -744,6 +752,29 @@ function remove_menus(){
     //   remove_menu_page( 'tools.php' );                  //Tools
     // //   remove_menu_page( 'options-general.php' );        //Settings
     //   remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
+    }
+
+    if ($current_user->user_login == 'Admin') {
+
+      remove_menu_page( 'edit.php' );                  //Posts
+      remove_menu_page( 'index.php' );                  //Dashboard
+      remove_menu_page( 'jetpack' );                    //Jetpack*
+      remove_menu_page( 'edit-comments.php' );          //Comments
+      remove_menu_page( 'themes.php' );                 //Appearance
+      remove_menu_page( 'plugins.php' );                //Plugins
+      remove_menu_page( 'users.php' );                  //Users
+      remove_menu_page( 'tools.php' );                  //Tools
+      remove_menu_page( 'options-general.php' );        //Settings
+      remove_menu_page( 'mailchimp-woocommerce' );        //WooComm Mailchimp
+      remove_menu_page( 'wpseo_dashboard' );        //SEO
+      remove_menu_page( 'ai1wm_export' );        //Import
+      remove_menu_page( 'wpcf7' );        //Contact Form
+      remove_menu_page( 'email_footer' );        //Footer Options
+      remove_menu_page( 'hero_slider' );        //Hero Options
+      remove_menu_page( 'nav-menus.php' );        //Menus Sub Menu
+      remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
+      remove_menu_page('edit.php?post_type=page');      //ACF
+      remove_menu_page('upload.php');      //Media
     }
   }
 }
