@@ -18,7 +18,12 @@ get_header(); ?>
               <div class="single-result-words">
                 <h4><?php the_title(); ?></h4>
                 <div class="single-result-excerpt">
-                  <?php echo substr(get_the_excerpt(), 0,200); ?>
+									<?php $thisID = get_the_ID();?>
+									<?php if(get_field('main_description', $thisID)):?>
+										<?php the_field('main_description', $thisID);?>
+									<?php else:?>
+                  	<?php echo substr(get_the_excerpt(), 0,100); ?>
+									<?php endif;?>
                 </div>
                 <div class="button">
                   <a class="c-block-fill" href="<?php the_permalink(); ?>"></a>

@@ -1,0 +1,79 @@
+@import "colors";
+
+.order_details {
+  border-top:1px solid $lightGray;
+  border-bottom:1px solid $lightGray;
+  padding-top:8px;
+  margin-bottom:8px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+#submitpayment {
+
+  h4 {
+    font-size:14px;
+    font-weight:400;
+    color:black;
+    margin-bottom:2px;
+  }
+
+  tbody, tr, td {
+    display: inline-block;
+  }
+
+  tr {
+    width:100%;
+    margin-bottom:14px;
+  }
+
+  td {
+    margin-right:8px;
+  }
+
+  input[type="text"] {
+    border-bottom:1px solid $lightGray;
+  }
+
+  input[type="button"] {
+  	cursor:pointer;
+  	display: inline-block;
+  	position: relative;
+  	font:400 20px/1 'Montserrat', sans-serif;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	background:$blue;
+  	color:white;
+  	padding:14px 28px;
+  	border:0px solid white;
+  	transition:all 0.3s ease-in;
+
+  	&:hover {
+  		background:$lightBlue;
+
+  		a {
+  			color:$blue;
+  		}
+  	}
+  }
+
+  ul.paymentmethods li, #pmtable {
+    border:0px solid white;
+  }
+}
+
+
+.order-recap-row {
+  margin-bottom:8px;
+
+  h5 {
+    margin-bottom:2px;
+  }
+}
+
+
+.woocommerce-thankyou-order-details {
+  display:none;
+}

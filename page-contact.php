@@ -21,7 +21,8 @@
 					<p class="info-notes"><?php the_field('information_notes');?></p>
 					<h2><?php the_field('information_cta_title');?></h2>
 					<div class="button">
-						<a href="/shop"></a>
+						<?php $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );?>
+						<a href="<?php echo $shop_page_url;?>"></a>
 						Shop Now
 					</div>
 				</div>

@@ -217,3 +217,30 @@
     color: $blue;
   }
 }
+
+.mailchimp-newsletter {
+  display: flex;
+  align-items: flex-start;
+
+  input {
+    margin-right:10px;
+    margin-top:3px;
+  }
+
+  label {
+
+    span {
+      color:$blue;
+      position: relative;
+    }
+  }
+}
+
+#mailchimp_woocommerce_newsletter {
+  width:auto;
+  -webkit-appearance:checkbox;
+}
+
+#ship-to-different-address {
+  margin-bottom: 0px;
+}

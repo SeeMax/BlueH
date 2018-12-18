@@ -70,6 +70,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="legal-footer">
+		<div class="content">
+			Statements on Blueharvestlife.com have not been evaluated by the Food and Drug Administration.  The products on this website are not intended to diagnose, treat, cure or prevent any disease.
+		</div>
+	</div>
 </footer>
 <?php wp_footer(); ?>
 </div><!-- WRAPPER -->

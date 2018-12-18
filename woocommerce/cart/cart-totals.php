@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
 
 				<div>
-					<?php echo $code;?> : 
+					<?php echo $code;?> :
 					<!-- <?php wc_cart_totals_coupon_label( $coupon ); ?> -->
 				</div>
 				<div data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>">
@@ -106,6 +106,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="wc-proceed-to-checkout">
 		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 	</div>
+	<div class="wc-keep-shopping-checkout">
+		<?php $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );?>
+		<a class="button" href="<?php echo $shop_page_url;?>">Keep Shopping</a>
+	</div>
+
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
 

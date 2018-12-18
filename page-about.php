@@ -12,7 +12,7 @@
 		<section class="rethink-section">
 			<div class="content">
 				<h2><?php the_field('rethink_title', false, false);?></h2>
-				<h3><?php the_field('rethink_subtitle');?></h3>
+				<p><?php the_field('rethink_subtitle');?></p>
 				<div class="rethink-icons">
 					<?php if( have_rows('rethink_icon') ): while ( have_rows('rethink_icon') ) : the_row();?>
 						<?php $iconImage = get_sub_field('rethink_icon_image');?>

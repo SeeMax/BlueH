@@ -1,0 +1,67 @@
+@import "colors";
+
+.default-page {
+
+  p {
+    margin:5px 0px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 20px;
+  }
+
+  ul {
+
+    li {
+      text-indent: 0px;
+
+      &:before {
+        content: '–';
+        margin-right: 2px;
+      }
+    }
+  }
+
+  ol {
+    padding:0;
+    margin:0;
+    margin-left:14px;
+  }
+
+  .main-section {
+
+    .content {
+      padding-bottom:45px;
+    }
+  }
+}
+
+
+.woocommerce-page {
+
+  .default-page {
+
+    p {
+      margin:1em 0px;
+    }
+
+
+    ul {
+
+      li {
+
+        &:before {
+          content: '';
+          margin-right:0px;
+        }
+      }
+    }
+
+    .main-section {
+
+      .content {
+        padding-bottom:0px;
+      }
+    }
+  }
+}

@@ -9,9 +9,93 @@
 }
 
 .hero-section {
+  margin-bottom:0;
 
   .button {
-    font-weight:700;
+
+  }
+
+  h1 {
+    width:50%;
+  }
+
+  .button {
+    margin-top:20px;
+    background:white;
+    color:$blue;
+    margin-right:10%;
+  }
+}
+
+.hero-sub-section {
+
+  .content {
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:40px;
+    padding-bottom:40px;
+  }
+
+  .button {
+    margin-top:20px;
+    background:white;
+    color:$blue;
+  }
+
+  h2 {
+    font-weight:100;
+    color:white;
+    text-align: left;
+    padding-right:12px;
+  }
+}
+
+.product-preview-section {
+
+  .content {
+    text-align: center;
+    justify-content: center;
+    padding-bottom:50px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom:5px;
+  }
+
+  .product-preview-description {
+    margin-bottom:20px;
+  }
+
+  .single-product-preview {
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    margin:0px 2% 50px 2%;
+    text-align:center;
+
+    .single-product-preview-words {
+      width:100%;
+      height:auto;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .button-container {
+      width:100%;
+      height:auto;
+      text-align: center;
+      margin-top:34px;
+    }
+
+    h4 {
+      margin-bottom:5px;
+    }
   }
 }
 
@@ -19,6 +103,8 @@
 
   .content {
     justify-content: space-between;
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
 
   h2 {
@@ -155,15 +241,16 @@
 
   img {
     position: absolute;
-    bottom:0;
-    right:-100px;
-    width:100%;
-    height:auto;
+    bottom: 0;
+    right: -100px;
+    width: 100%;
+    height: auto;
   }
 }
 
 
 .callout-section {
+  margin-top:50px;
 
   .content {
     padding-top: 54px;
@@ -172,7 +259,7 @@
 
   h2, h4 {
     text-align: center;
-    color:white;
+    color:$blue;
   }
 
   h2 {
@@ -212,14 +299,17 @@
   }
 
   img {
-
+    width:100%;
+    height:auto;
   }
 }
 
 .blog-section {
+  background: #efefef;
 
   .content {
     justify-content: space-between;
+    padding-bottom: 75px;
   }
 
   h2 {

@@ -60,6 +60,10 @@
     p:nth-child(1) {
       margin-top:0;
     }
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   &:nth-last-of-type(1) {

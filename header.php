@@ -5,7 +5,7 @@
 	<title><?php the_title(); ?></title>
 
 	<link href="//www.google-analytics.com" rel="dns-prefetch">
-  <link href="<?php echo get_template_directory_uri(); ?>/img/favicon.png" rel="shortcut icon">
+  <link href="<?php echo get_template_directory_uri(); ?>/img/favicon.png?v=2" rel="shortcut icon">
    <!-- <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed"> -->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,6 +14,35 @@
 
 	<?php wp_head(); ?>
 
+	<!-- Facebook Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window,document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	 fbq('init', '220868825351635');
+	fbq('track', 'PageView');
+	</script>
+	<noscript>
+	 <img height="1" width="1"
+	src="https://www.facebook.com/tr?id=220868825351635&ev=PageView
+	&noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code -->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127785780-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-127785780-1');
+	</script>
 
 </head>
 <body <?php body_class(); ?> >
@@ -26,7 +55,7 @@
 		<?php get_template_part('partials/_cart-popout');?>
 		<?php if ( get_field( 'display_promo','option' ) ): ?>
 			<div class="promo-container">
-				<h4><?php the_field('promo_copy','option');?></h4>
+				<?php the_field('promo_copy','option');?>
 			</div>
 		<?php endif; // end of if field_name logic ?>
 		<div class="content header-inner-wrap">

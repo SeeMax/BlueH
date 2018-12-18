@@ -21,12 +21,12 @@ get_header();?>
 
 		<?php $pageID = 9;?>
 		<?php $shopHeroBackground = get_field('shop_hero_background',$pageID);?>
-		
+
 		<section class="headline-section">
 			<div class="content">
-				<h1><?php the_field('shop_headline',$pageID, false, false);?></h1>
-				<h2><?php the_field('shop_sub_headline',$pageID);?></h2>
-				<p><?php the_field('shop_body',$pageID);?></p>
+				<h1><?php the_field('spray_headline','options');?></h1>
+				<h2><?php the_field('spray_subheadline','options');?></h2>
+				<p><?php the_field('spray_body_copy','options');?></p>
 			</div>
 		</section>
 

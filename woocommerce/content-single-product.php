@@ -86,7 +86,7 @@ if ( post_password_required() ) {
 				Suggested Use
 			</div>
 			<div class="single-product-toggle-button ingredients">
-				Ingredients
+				Ingredients and Test Results
 			</div>
 		</div>
 		<div class="product-toggle-container">
@@ -96,13 +96,9 @@ if ( post_password_required() ) {
 			<div class="single-product-toggle c-block-fill suggested-uses">
 				<?php the_field('suggested_uses');?>
 			</div>
-			<ul class="single-product-toggle c-block-fill ingredients">
-				<?php if( have_rows('ingredients') ):
-				  while ( have_rows('ingredients') ) : the_row();?>
-				  	<li><?php the_sub_field('single_ingredient');?></li>
-				<?php endwhile;
-				endif;?>
-			</ul>
+			<div class="single-product-toggle c-block-fill ingredients">
+				 <?php the_field('ingredients', false, false);?>
+			</div>
 		</div>
 	</div>
 

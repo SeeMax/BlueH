@@ -269,7 +269,7 @@ function theme_header_scripts() {
     // wp_register_script('DrawSVGPlugin', get_template_directory_uri() . '/js/lib/DrawSVGPlugin.min.js', array(), '0.1.3', true);
     // wp_enqueue_script('DrawSVGPlugin');
 
-    wp_register_script('imagesLoaded', get_template_directory_uri() . '/js/lib/imagesLoaded.js', array(), '4.1.1', true);
+    wp_register_script('imagesLoaded', get_template_directory_uri() . '/js/lib/imagesloaded.pkgd.js', array(), '4.1.1', true);
     wp_enqueue_script('imagesLoaded');
 
     wp_register_script('isotope', get_template_directory_uri() . '/js/lib/isotope.js', array(), '3.0.4', true);
@@ -437,16 +437,6 @@ if (function_exists('acf_add_options_page')) {
   ));
 
   acf_add_options_page(array(
-      'page_title'    => 'Hero Slider',
-      'menu_title'    => 'Hero Slider',
-      'menu_slug'    => 'hero_slider',
-      'capability'    => 'edit_posts',
-      'redirect'    => false,
-      'icon_url' => 'dashicons-images-alt',
-      'position' => 6
-  ));
-
-  acf_add_options_page(array(
       'page_title'    => 'Email Footer',
       'menu_title'    => 'Email Footer',
       'menu_slug'    => 'email_footer',
@@ -462,6 +452,26 @@ if (function_exists('acf_add_options_page')) {
       'menu_title'    => 'Testimonial On/Off',
       'parent_slug'    => 'edit.php?post_type=testimonial',
       'position' => 1
+  ));
+
+  acf_add_options_page(array(
+      'page_title'     => '404 Page Copy',
+      'menu_title'    => '404 Page Copy',
+      'menu_slug'    => 'fourofour_page_copy',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-welcome-comments',
+      'position' => 8
+  ));
+
+  acf_add_options_page(array(
+      'page_title'     => 'Product Category Headlines',
+      'menu_title'    => 'Product Category Headlines',
+      'menu_slug'    => 'category_headlines',
+      'capability'    => 'edit_posts',
+      'redirect'    => false,
+      'icon_url' => 'dashicons-welcome-write-blog',
+      'position' => 9
   ));
 }
     /*  ACF GLOBAL	*/
@@ -756,25 +766,25 @@ function remove_menus(){
 
     if ($current_user->user_login == 'Admin') {
 
-      remove_menu_page( 'edit.php' );                  //Posts
-      remove_menu_page( 'index.php' );                  //Dashboard
-      remove_menu_page( 'jetpack' );                    //Jetpack*
-      remove_menu_page( 'edit-comments.php' );          //Comments
-      remove_menu_page( 'themes.php' );                 //Appearance
-      remove_menu_page( 'plugins.php' );                //Plugins
-      remove_menu_page( 'users.php' );                  //Users
-      remove_menu_page( 'tools.php' );                  //Tools
-      remove_menu_page( 'options-general.php' );        //Settings
-      remove_menu_page( 'mailchimp-woocommerce' );        //WooComm Mailchimp
-      remove_menu_page( 'wpseo_dashboard' );        //SEO
-      remove_menu_page( 'ai1wm_export' );        //Import
-      remove_menu_page( 'wpcf7' );        //Contact Form
-      remove_menu_page( 'email_footer' );        //Footer Options
-      remove_menu_page( 'hero_slider' );        //Hero Options
-      remove_menu_page( 'nav-menus.php' );        //Menus Sub Menu
-      remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
-      remove_menu_page('edit.php?post_type=page');      //ACF
-      remove_menu_page('upload.php');      //Media
+      // remove_menu_page( 'edit.php' );                  //Posts
+      // remove_menu_page( 'index.php' );                  //Dashboard
+      // remove_menu_page( 'jetpack' );                    //Jetpack*
+      // remove_menu_page( 'edit-comments.php' );          //Comments
+      // remove_menu_page( 'themes.php' );                 //Appearance
+      // remove_menu_page( 'plugins.php' );                //Plugins
+      // remove_menu_page( 'users.php' );                  //Users
+      // remove_menu_page( 'tools.php' );                  //Tools
+      // remove_menu_page( 'options-general.php' );        //Settings
+      // remove_menu_page( 'mailchimp-woocommerce' );        //WooComm Mailchimp
+      // remove_menu_page( 'wpseo_dashboard' );        //SEO
+      // remove_menu_page( 'ai1wm_export' );        //Import
+      // remove_menu_page( 'wpcf7' );        //Contact Form
+      // remove_menu_page( 'email_footer' );        //Footer Options
+      // remove_menu_page( 'hero_slider' );        //Hero Options
+      // remove_menu_page( 'nav-menus.php' );        //Menus Sub Menu
+      // remove_menu_page('edit.php?post_type=acf-field-group');      //ACF
+      // remove_menu_page('edit.php?post_type=page');      //ACF
+      // remove_menu_page('upload.php');      //Media
     }
   }
 }
@@ -1021,4 +1031,22 @@ function add_loginout_link( $items, $args ) {
 
   return $items;
 
+}
+
+add_filter('use_block_editor_for_post', '__return_false');
+
+
+add_filter('default_hidden_meta_boxes', 'show_hidden_meta_boxes', 10, 2);
+
+function show_hidden_meta_boxes($hidden, $screen) {
+    if ( 'post' == $screen->base ) {
+        foreach($hidden as $key=>$value) {
+            if ('postexcerpt' == $value) {
+                unset($hidden[$key]);
+                break;
+            }
+        }
+    }
+
+    return $hidden;
 }

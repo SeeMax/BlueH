@@ -131,6 +131,19 @@
 	}
 }
 
+.legal-footer {
+	color:$blue;
+	background:$lightGray;
+	font-size:14px;
+	line-height: 1.4;
+	font-weight: 100;
+
+	.content {
+		padding-top:24px;
+		padding-bottom:20px;
+	}
+}
+
 // 1024px And Below
 @media screen and (max-width: 1024px){
 
@@ -193,6 +206,13 @@
 		i {
 			margin-right:3px;
 			font-size:28px;
+		}
+	}
+
+	.legal-footer {
+
+		.content {
+			padding-top:24px;
 		}
 	}
 }

@@ -40,7 +40,8 @@
 				<div class="shop-now-words c-width-70">
 					<h2><?php the_field('shop_now_headline', false, false);?></h2>
 					<div class="button">
-						<a href="/shop"></a>
+						<?php $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );?>
+						<a href="<?php echo $shop_page_url;?>"></a>
 						Shop
 					</div>
 				</div>

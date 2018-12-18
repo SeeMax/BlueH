@@ -9,7 +9,7 @@
     }
 
     h1, h2 {
-      
+
     }
 
     h2 {
@@ -92,4 +92,10 @@
 // 767px And Below
 @media screen and (max-width: 767px){
 
+  .blog-section {
+
+    .content {
+      padding-left:0px;
+    }
+  }
 }
